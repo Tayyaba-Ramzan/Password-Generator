@@ -2,9 +2,8 @@ import streamlit as st
 import random
 import string
 import math
-import pyperclip
 
-# Set page config with favicon
+# Set page config
 st.set_page_config(
     page_title="Advanced Password Checker", 
     page_icon="🔒", 
@@ -112,9 +111,9 @@ if st.button("Generate Password"):
     generated_password = generate_password(length, uppercase, numbers, special_chars)
     st.text_area("Generated Password:", generated_password, height=70)
     
-    if st.button("Copy to Clipboard"):
-        pyperclip.copy(generated_password)
-        st.success("📋 Password copied successfully!")
+    # New Copy Method: Manual Copy using `st.code()`
+    st.code(generated_password, language="")
+    st.markdown("**Manually copy the password above.**")
 
 # Sidebar Security Tips
 st.sidebar.subheader("📌 Password Security Tips")
